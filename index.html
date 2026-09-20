@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TypeSpeed — Typing Speed Test</title>
+  <meta name="description" content="A sleek, Monkeytype-inspired typing speed test. Measure your WPM, accuracy, and more." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌨️</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ======================= HEADER ======================= -->
+    <header class="app-header">
+      <div class="logo">
+        <span class="logo-icon">⌨</span>
+        <span class="logo-text">Type<span class="accent">Speed</span></span>
+      </div>
+      <div class="header-actions">
+        <button id="restartBtnHeader" class="icon-btn" title="Restart test">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main">
+
+      <!-- ======================= CONFIG BAR ======================= -->
+      <section id="configBar" class="config-bar" aria-label="Test configuration">
+        <div class="config-group" role="group" aria-label="Select test duration">
+          <span class="config-label">time</span>
+          <button class="time-option" data-time="15">15s</button>
+          <button class="time-option active" data-time="30">30s</button>
+          <button class="time-option" data-time="60">60s</button>
+          <button class="time-option" data-time="120">120s</button>
+        </div>
+      </section>
+
+      <!-- ======================= LIVE STATS ======================= -->
+      <section id="liveStats" class="live-stats" aria-live="polite">
+        <div class="stat-pill">
+          <span class="stat-value" id="liveTimer">30</span>
+          <span class="stat-label">seconds</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-value" id="liveWpm">0</span>
+          <span class="stat-label">wpm</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-value" id="liveAccuracy">100%</span>
+          <span class="stat-label">accuracy</span>
+        </div>
+      </section>
+
+      <!-- ======================= TYPING AREA ======================= -->
+      <section id="typingScreen" class="typing-screen">
+        <div id="textDisplay" class="text-display" tabindex="0" aria-label="Typing text area, click to focus and start typing"></div>
+
+        <!-- Hidden input captures all keystrokes; works for mobile keyboards too -->
+        <input
+          type="text"
+          id="hiddenInput"
+          class="hidden-input"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+
+        <div class="focus-hint" id="focusHint">Click here or press any key to focus and start typing</div>
+      </section>
+
+      <!-- ======================= RESULTS SCREEN ======================= -->
+      <section id="resultsScreen" class="results-screen hidden">
+        <h2 class="results-title">Test Complete</h2>
+
+        <div class="results-grid">
+          <div class="result-card highlight">
+            <span class="result-value" id="resNetWpm">0</span>
+            <span class="result-label">Net WPM</span>
+          </div>
+          <div class="result-card highlight">
+            <span class="result-value" id="resAccuracy">0%</span>
+            <span class="result-label">Accuracy</span>
+          </div>
+          <div class="result-card">
+            <span class="result-value" id="resGrossWpm">0</span>
+            <span class="result-label">Gross WPM</span>
+          </div>
+          <div class="result-card">
+            <span class="result-value" id="resTime">0s</span>
+            <span class="result-label">Time</span>
+          </div>
+          <div class="result-card">
+            <span class="result-value" id="resCorrectChars">0</span>
+            <span class="result-label">Correct Chars</span>
+          </div>
+          <div class="result-card">
+            <span class="result-value" id="resIncorrectChars">0</span>
+            <span class="result-label">Incorrect Chars</span>
+          </div>
+          <div class="result-card">
+            <span class="result-value" id="resTotalChars">0</span>
+            <span class="result-label">Total Chars</span>
+          </div>
+          <div class="result-card">
+            <span class="result-value" id="resMistakes">0</span>
+            <span class="result-label">Mistakes</span>
+          </div>
+        </div>
+
+        <button id="restartBtn" class="primary-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+          Try Again
+        </button>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>Press <kbd>Tab</kbd> then <kbd>Enter</kbd>, or click "Try Again" to restart · Built with HTML, CSS &amp; JavaScript</p>
+    </footer>
+  </div>
+
+  <script src="words.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
